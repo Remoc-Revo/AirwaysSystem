@@ -1,0 +1,8 @@
+#Ignore  client/node_modules/
+client/node_modules/
+
+#ignore server/client/node_modules/
+server/node_modules/
+
+#
+server/Database.sql
