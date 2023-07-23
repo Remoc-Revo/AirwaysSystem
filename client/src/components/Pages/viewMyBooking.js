@@ -1,17 +1,18 @@
 import React from "react";
 import { useState, useEffect } from "react";
-import { useParams,Link } from "react-router-dom";
+import { useParams,Link ,useHistory} from "react-router-dom";
 import Axios from "axios";
 import "./styles/Tables.css";
 
 
 const ViewMyBooking = () => {
+  const history = useHistory();
   const [data, setData] = useState([]);
   const { id } = useParams();
   const loadData = async () => {
     const response = await Axios.get(`http://localhost:5000/myBookings/${id}`);
     setData(response.data);
-    console.log(response.data);
+    console.log("thee responseee",response.data);
   };
 
   useEffect(() => {
@@ -40,13 +41,16 @@ const ViewMyBooking = () => {
                 return(
                   <tr key={index} style={{backgroundColor:'white'}}>
                     {/* <th scope='row'>{index+1}</th> */}
-                    <td>{item.airport_code}</td>
-                    <td>{item.fname}</td>
-                    <td>{item.lname}</td>
-                    <td>{item.flight_no}</td>
-                    <td>{item.seat_no}</td>
-                    <td>{item.gate_no}</td>
+                    <td>{item.departure_airport}</td>
+                    <td>{item.arrival_airport}</td>
+                    <td>{item.departure_date}</td>
                     <td>{item.departure_time}</td>
+                    <td className="d-flex justify-content-between">
+                        <button className="btn btn-success">Print Ticket</button>
+                        <button className="btn btn-warning" onClick={()=>history.push(`/BookTicket/${id}/${item.ticket_id}`)}>Change</button>
+                        <button className="btn btn-danger">Delete</button>
+                        
+                    </td>
                   </tr>
                 )
               })}

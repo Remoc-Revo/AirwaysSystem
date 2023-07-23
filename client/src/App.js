@@ -85,14 +85,14 @@ function App() {
           <Route path='/CustomerPanel/:id' component={CustomerPanel}/>
           <Route path='/ViewProfile/:id' component={ViewProfile}/>
           <Route path='/CustomerPanel/:id' component={CustomerPanel}/>
-          <Route path='/BookTicket/:id' component={BookTicket}/>
+          <Route path='/BookTicket/:id/:ticketId' component={BookTicket}/>
           <Route path='/BoardingPass/:id' component={BoardingPass}/>
           <Route path='/Invoice/:id' component={Invoice}/>
           <Route path='/AddReviews/:id' component={AddReviews}/>
           <Route path='/ViewCustomerTickets/:id' component={ViewCustomerTickets}/>
           <Route path='/Booking' component={Booking}/>
           <Route path='/PrintTicket/:data' component={PrintTicket}/>
-          <Route path='/ViewMyBooking/:id' component={ViewMyBooking}/>
+          <Route path='/ViewMyBooking/:id/:ticketId' component={ViewMyBooking}/>
           <>
           <Navbar/>
           <Route exact path='/' component={Home}/>

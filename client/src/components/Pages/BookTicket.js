@@ -12,11 +12,13 @@ import {Spinner,Modal} from 'react-bootstrap';
 
 const BookTicket = () => {
   // Swal=withReactContent(Swal);
-
+  const { id,ticketId } = useParams();
   const history = useHistory();
+  console.log("tre34",id,useParams())
   const {
     register,
     handleSubmit,
+    setValue,
     formState: { errors },
   } = useForm();
 
@@ -29,6 +31,8 @@ const BookTicket = () => {
   //   const response = await Axios.get("http://localhost:5000/airport/api/get");
   //   setData(response.data);
   // };
+
+
 
   const airportData=[
     {
@@ -53,7 +57,6 @@ const BookTicket = () => {
     },
     
   ]
-  const { id } = useParams();
 
   function combineDatetime(date,time){
     date=new Date(date);
@@ -78,7 +81,25 @@ const BookTicket = () => {
   
   useEffect(() => {
     // loadData();
-  }, []);
+
+    if(ticketId){
+      Axios.get(`http://localhost:5000/ticketInfo/${ticketId}`)
+           .then((response)=>{
+             if(response.status === 200){
+              console.log("classsii",response.data.ticketInfo.departure_date)
+              setValue('class',response.data.ticketInfo.class);
+              setValue('departureTime',response.data.ticketInfo.departure_time.slice(0,-3));
+              setValue('departure',response.data.ticketInfo.departure_airport);
+              setValue('arrival',response.data.ticketInfo.arrival_airport);
+              setValue('departureDate',response.data.ticketInfo.departure_date.split('T')[0]);
+             }
+           })
+           .catch((err)=>{
+            console.log("ticket info error",err)
+           })
+    }
+  }, [ticketId]);
+
   // handle submit
   const onSubmit = (data) => {
     // console.log(`yeeee ${data.departure}`);
@@ -122,7 +143,9 @@ const BookTicket = () => {
 
   const confirmBooking=()=>{
     console.log("confiiirm")
-    Axios.post("http://localhost:5000/BookTicket",{
+    const url = (ticketId) ? `/changeTicket/${ticketId}` : "/BookTicket";
+
+    Axios.post(`http://localhost:5000${url}`,{
       id:id,
       departure: data.departure,
       arrival: data.arrival,
@@ -133,7 +156,7 @@ const BookTicket = () => {
          .then((response)=>{
             if(response.status === 200){
               Swal.fire({
-                text:"Booked Successfully",
+                text: (!ticketId) ? "Booked Successfully" : "Changed Successfully",
                 icon:"success",
                 confirmButtonText: 'Print Ticket'
               })

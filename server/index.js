@@ -452,6 +452,34 @@ app.get("/CustomerPanel/:id",(req,res)=>{
 app.get('/myBookings/:id',(req,res)=>{
     const {id} = req.params;
     console.log("booookings::",id)
+
+    const query = `select * from TICKET where client_id =1 and departure_date >= CURDATE() 
+                    or (departure_date = CURDATE() and departure_time >= CURTIME());`
+
+    db.query(query,id,(err,result)=>{
+        if(err){
+            console.log(err)
+        }
+        if(result){
+            console.log("reeee",result);
+            res.status(200).send(result);
+        }
+    })
+})
+
+app.get('/ticketInfo/:ticketId',(req,res)=>{
+    const {ticketId} = req.params;
+
+    db.query(`select * from TICKET where ticket_id = ${ticketId}`,(err,result)=>{
+        if(err){
+            console.log(err)
+        }
+        if(result){
+            const ticketInfo = result[0]
+            console.log(ticketInfo)
+            return res.status(200).send({ticketInfo});
+        }
+    })
 })
 
 app.post('/findFlight',(req,res)=>{
@@ -630,6 +658,31 @@ app.post('/BookTicket',(req,res)=>{
     })
 })
 
+app.post("/changeTicket/:ticketId",(req,res)=>{
+    const {ticketId} = req.params;
+    console.log(".....changing ",ticketId)
+
+    const client_id=req.body.id;
+    const departure=req.body.departure;
+    const arrival=req.body.arrival;
+    const departureDate=req.body.departureDate;
+    const departureTime=req.body.departureTime;
+    // const returnDate=req.body.returnDate;
+    const classs=req.body.class;
+    // const price=req.body.price;
+
+    const sqlInsert=`update TICKET set ticket_id = ${ticketId} ,client_id = ?,departure_airport = ?,arrival_airport = ?,departure_date = ?,departure_time = ?,class = ? where ticket_id = ${ticketId}`;
+    db.query(sqlInsert,[client_id,departure,arrival,departureDate,departureTime,classs],(err,result)=>{
+        if(err){
+            console.log(err)
+            res.status(500).send({err:err});
+        }
+        if(result){
+            console.log("result:::",result)
+            res.status(200).send({});
+        }
+    })
+})
 
 app.get("/SearchFlights",(req,res)=>{
     const sqlGet="select fb_id,departure,arrival,departureDate, returnDate, class,price from FlightBooking;"

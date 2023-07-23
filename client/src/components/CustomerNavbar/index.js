@@ -9,7 +9,8 @@ import {
     NavBtnLink
   } from '../Navbar/NavbarElements';
 const CustomerNavbar = () => {
-    const {id}=useParams();
+    const {id, ticketId}=useParams();
+    
   return (
     <div>
         <Nav>
@@ -17,10 +18,10 @@ const CustomerNavbar = () => {
             <NavLink to={`/ViewProfile/${id}`} >
                 View Profile
             </NavLink>
-            <NavLink to={`/BookTicket/${id}`} >
+            <NavLink to={`/BookTicket/${id}/${ticketId}`} >
                 Book Flight
             </NavLink>
-            <NavLink to={`/ViewMyBooking/${id}`} >
+            <NavLink to={`/ViewMyBooking/${id}/${ticketId}`} >
                 View Bookings
             </NavLink>
             <NavLink to={`/AddReviews/${id}`} >
