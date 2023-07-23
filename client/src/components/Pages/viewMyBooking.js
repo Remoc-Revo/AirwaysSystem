@@ -15,6 +15,15 @@ const ViewMyBooking = () => {
     console.log("thee responseee",response.data);
   };
 
+  function handleDelete(ticketId){
+    Axios.post(`http://localhost:5000/deleteBooking/${ticketId}`)
+         .then((response)=>{
+            if(response.status === 200){
+              window.location.reload();
+            }
+         })
+  }
+
   useEffect(() => {
     loadData();
   }, []);
@@ -48,7 +57,7 @@ const ViewMyBooking = () => {
                     <td className="d-flex justify-content-between">
                         <button className="btn btn-success">Print Ticket</button>
                         <button className="btn btn-warning" onClick={()=>history.push(`/BookTicket/${id}/${item.ticket_id}`)}>Change</button>
-                        <button className="btn btn-danger">Delete</button>
+                        <button className="btn btn-danger" onClick={()=>handleDelete(item.ticket_id)}>Delete</button>
                         
                     </td>
                   </tr>

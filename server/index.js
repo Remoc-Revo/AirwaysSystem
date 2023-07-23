@@ -684,6 +684,19 @@ app.post("/changeTicket/:ticketId",(req,res)=>{
     })
 })
 
+app.post('/deleteBooking/:ticketId',(req,res)=>{
+    const {ticketId} = req.params;
+
+    db.query(`delete from TICKET where ticket_id = ${ticketId}`,(err,result)=>{
+        if(err){
+            console.log(err);
+        }
+        if(result){
+            return res.status(200).send({})
+        }
+    })
+})
+
 app.get("/SearchFlights",(req,res)=>{
     const sqlGet="select fb_id,departure,arrival,departureDate, returnDate, class,price from FlightBooking;"
     db.query(sqlGet,(err,result)=>{
