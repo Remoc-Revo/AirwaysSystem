@@ -6,7 +6,7 @@ import 'react-toastify/dist/ReactToastify.css';
 import Home from "./components/Pages/Home";
 import Contact from "./components/Pages/Contact"
 import About from './components/Pages/About'
-import Signin from './components/Pages/Signin'
+import Signin from './components/Pages/AdminSignin'
 import Signup from "./components/Pages/Signup";
 import Client from "./components/Pages/Client";
 import Navbar from "./components/Navbar";

@@ -21,7 +21,7 @@ const AdminPanel = () => {
       <br/>
       <br/>
       <br/>
-      <MovingText
+      {/* <MovingText
         type="popIn"
         duration="1600ms"
         delay="0s"
@@ -31,7 +31,7 @@ const AdminPanel = () => {
         fillMode="none"
         >
         <h1 style={{textAlign:"center", fontSize:"80px", fontWeight:'800', color:'white',backgroundColor:'black',width:'100vw',padding:'10px'}}>Welcome, cynotryl!</h1>
-      </MovingText>
+      </MovingText> */}
       <br/>
       <br/>
       <div style={{backgroundColor:'black', width:'100vw', padding:'10px'}}>

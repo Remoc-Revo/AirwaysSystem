@@ -22,7 +22,8 @@ const Signin = () => {
       email: emailLogin,
       password: passwordLogin,
     });
-    initial.id=response.data[0].client_id
+    initial.id=response.data[0].user_id
+    
   };
   
   const handleInputChange = (event) => {
@@ -39,7 +40,8 @@ const Signin = () => {
     }).then((response) => {
       if (response.data.msg) {
         Swal.fire("Invalid Login!", "", "error");
-      } else {
+      } else if(response.status === 200){
+        console.log("initial iddd?"+initial.id)
         Swal.fire("Login Success!", "", "success");
         setTimeout(()=>history.push(`/CustomerPanel/${initial.id}`),500)
       }

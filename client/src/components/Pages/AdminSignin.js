@@ -10,14 +10,14 @@ class Signin extends Component {
   {
     super(props);
     this.state = {
-      usernameLogin: '',
+      emailLogin: '',
       passwordLogin: '',
     };
   }
 
-  handleUsernameChange = (event) => {
+  handleEmailChange = (event) => {
     this.setState({
-      usernameLogin: event.target.value,
+      emailLogin: event.target.value,
     });
   };
 
@@ -29,8 +29,9 @@ class Signin extends Component {
   
   Login=(event)=>{
     event.preventDefault();
+    console.log(this.state)
     Axios.post('http://localhost:5000/login', {
-      username:this.state.usernameLogin,
+      email:this.state.emailLogin,
       password:this.state.passwordLogin,
     }).then((response)=>{
     if(response.data.msg)
@@ -41,9 +42,9 @@ class Signin extends Component {
         'error'
       )
     }
-    else
+    else if(response.status === 200)
     {
-      
+      console.log("res status",response.status)
       Swal.fire(
         'Login Success!',
         '',
@@ -61,11 +62,11 @@ class Signin extends Component {
         <div className="Auth-form-content">
           <h3 className="Auth-form-title">Sign In</h3>
           <div className="form-group mt-3">
-            <label>Username</label>
+            <label>Email</label>
             <input
-              type="username" onChange={this.handleUsernameChange}
+              type="email" onChange={this.handleEmailChange}
               className="form-control mt-1"
-              placeholder="Username" required style={{width:'320px'}}
+              placeholder="Email" required style={{width:'320px'}}
             />
           </div>
           <div className="form-group mt-3">

@@ -371,30 +371,38 @@ app.put("/ticket/api/update/:id",(req,res)=>{
 
 //login
 app.post("/login",(req,res)=>{
-    const username=req.body.username;
+    const email=req.body.email;
     const password=req.body.password;
-    db.query('select * from admin where username=? and password=?',[username,password],(err,result)=>{
-        if(err)
-        res.send({err: err})
-        if(result)
-        res.send(result);
+    db.query('select * from USER where email=? and password=?',[email,password],(err,result)=>{
+        if(err){
+            console.log(err);
+            res.status(500).send({err: err})
+        }
+        if(result && result.length){
+            console.log("resulttt",result);
+            res.status(200).send(result);
+        }
         else
         {
-            res.send({msg: 'Invalid Admin Login'})
+            res.status(401).send({msg: 'Invalid Admin Login'})
         }
     })
 })
 
 
 app.post("/customerlogin",(req,res)=>{
-    console.log("signing in.........")
     const username=req.body.email;
     const password=req.body.password;
-    db.query('select * from CLIENT where email=? and password=?',[username,password],(err,result)=>{
-        if(err)
-        res.status(401).send({err: err})
-        if(result)
-            res.send(result);
+    
+    db.query('select * from USER where email=? and password=?',[username,password],(err,result)=>{
+        if(err){
+            console.log(err)
+            res.status(401).send({err: err})
+        }
+
+        if(result){
+            res.status(200).send(result); 
+        }
         else
         {
             res.status(401).send({msg: 'Invalid Customer Login'})
@@ -407,11 +415,15 @@ app.post("/getcustomerlogin",(req,res)=>{
     const username=req.body.email;
     const password=req.body.password;
     
-    db.query('select client_id from CLIENT where email=? and password=?',[username,password],(err,result)=>{
-        if(err)
-        res.send({err: err})
-        if(result)
+    db.query('select user_id from USER where email=? and password=?',[username,password],(err,result)=>{
+        if(err){
+            console.log(err)
+            res.status(500).send({err: err})
+        }
+
+        if(result){
             res.send(result);
+        }
         else
         {
             res.status(401).send({msg: 'Invalid Customer Login'})
@@ -426,7 +438,7 @@ app.post("/signup",(req,res)=>{
     const phone=req.body.phone;
     const email=req.body.email;
     const password=req.body.password;
-    db.query('insert into CLIENT (client_id,first_name,last_name,phone,email,password) values(null,?,?,?,?,?);',[fname,lname,phone,email,password],(err,result)=>{
+    db.query('insert into USER (user_id,user_level,first_name,last_name,phone,email,password) values(null,0,?,?,?,?,?);',[fname,lname,phone,email,password],(err,result)=>{
         if(err){
             console.log(err);
             res.status(401).send({err: 'error'})
@@ -453,7 +465,7 @@ app.get('/myBookings/:id',(req,res)=>{
     const {id} = req.params;
     console.log("booookings::",id)
 
-    const query = `select * from TICKET where client_id =1 and departure_date >= CURDATE() 
+    const query = `select * from TICKET where client_id =${id} and departure_date >= CURDATE() 
                     or (departure_date = CURDATE() and departure_time >= CURTIME());`
 
     db.query(query,id,(err,result)=>{

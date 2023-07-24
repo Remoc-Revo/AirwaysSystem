@@ -82,7 +82,9 @@ const BookTicket = () => {
   useEffect(() => {
     // loadData();
 
-    if(ticketId){
+    if(ticketId != 'undefined'){
+      console.log("type ticket",typeof ticketId);
+
       Axios.get(`http://localhost:5000/ticketInfo/${ticketId}`)
            .then((response)=>{
              if(response.status === 200){
@@ -143,7 +145,7 @@ const BookTicket = () => {
 
   const confirmBooking=()=>{
     console.log("confiiirm")
-    const url = (ticketId) ? `/changeTicket/${ticketId}` : "/BookTicket";
+    const url = (ticketId !== 'undefined') ? `/changeTicket/${ticketId}` : "/BookTicket";
 
     Axios.post(`http://localhost:5000${url}`,{
       id:id,
@@ -156,7 +158,7 @@ const BookTicket = () => {
          .then((response)=>{
             if(response.status === 200){
               Swal.fire({
-                text: (!ticketId) ? "Booked Successfully" : "Changed Successfully",
+                text: (ticketId !== 'undefined') ? "Changed Successfully" : "Booked Successfully",
                 icon:"success",
                 confirmButtonText: 'Print Ticket'
               })
