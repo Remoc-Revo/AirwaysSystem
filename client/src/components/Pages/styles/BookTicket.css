@@ -24,7 +24,9 @@ input[type="text"]:not(:placeholder-shown) ~ .input-text{
 .bg-img{
   background-image: url('../../../images/pexels-ahmed-muntasir-912050.jpg');
   background-repeat: no-repeat;
-  height:100vh;
+  background-size: cover;
+  background-attachment: fixed;
+  /* height:100vh; */
 }
 
 

@@ -670,6 +670,31 @@ app.post('/BookTicket',(req,res)=>{
     })
 })
 
+app.post('/addPassenger',(req,res)=>{
+    console.log("Callleed adding")
+    const name=req.body.name;
+    const phone=req.body.phone;
+    const departure=req.body.departure;
+    const arrival=req.body.arrival;
+    const departureDate=req.body.departureDate;
+    const departureTime=req.body.departureTime;
+    // const returnDate=req.body.returnDate;
+    const classs=req.body.class;
+    // const price=req.body.price;
+
+    const sqlInsert='insert into TICKET (ticket_id,client_name,client_phone,departure_airport,arrival_airport,departure_date,departure_time,class) values (null,?,?,?,?,?,?,?)';
+    db.query(sqlInsert,[name,phone,departure,arrival,departureDate,departureTime,classs],(err,result)=>{
+        if(err){
+            console.log(err)
+            res.status(500).send({err:err});
+        }
+        if(result){
+            console.log("result:::",result)
+            res.status(200).send({});
+        }
+    })
+})
+
 app.post("/changeTicket/:ticketId",(req,res)=>{
     const {ticketId} = req.params;
     console.log(".....changing ",ticketId)

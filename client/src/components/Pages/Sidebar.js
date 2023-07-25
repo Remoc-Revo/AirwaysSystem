@@ -1,8 +1,10 @@
 import React from 'react';
-import {Link} from 'react-router-dom';
+import {Link,useParams} from 'react-router-dom';
 import { slide as Menu } from 'react-burger-menu';
 import './styles/Sidebar.css'
 const Sidebar=() => {
+  const {id} = useParams();
+
   return (
     <Menu>
       <Link className="menu-item" to="/AdminPanel">
@@ -10,6 +12,9 @@ const Sidebar=() => {
       </Link>
       <Link className="menu-item" to="/Client">
         Clients
+      </Link>
+      <Link className="menu-item" to={`/addPassenger/${id}`}>
+        Add Passenger
       </Link>
       <Link className="menu-item" to="/Airplane">
         Airplane

@@ -45,6 +45,7 @@ import ViewCustomerTickets from "./components/Pages/ViewCustomerTickets";
 import Booking from "./components/Pages/Booking";
 import PrintTicket from "./components/Pages/printTicket";
 import ViewMyBooking from "./components/Pages/viewMyBooking";
+import AddPassenger from "./components/Pages/addPassenger";
 
 function App() {
   return (
@@ -93,6 +94,7 @@ function App() {
           <Route path='/Booking' component={Booking}/>
           <Route path='/PrintTicket/:data' component={PrintTicket}/>
           <Route path='/ViewMyBooking/:id/:ticketId' component={ViewMyBooking}/>
+          <Route path='/addPassenger/:id' component={AddPassenger}/>
           <>
           <Navbar/>
           <Route exact path='/' component={Home}/>
