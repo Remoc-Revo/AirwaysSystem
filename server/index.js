@@ -461,6 +461,20 @@ app.get("/CustomerPanel/:id",(req,res)=>{
     })
 })
 
+app.get('/bookings',(req,res)=>{
+
+    db.query(`select * from TICKET where departure_date >= CURDATE() 
+    or (departure_date = CURDATE() and departure_time >= CURTIME())`,(err,result)=>{
+        if(err){
+            console.log(err);
+        }
+        if(result){
+            console.log(result);
+            res.status(200).send(result);
+        }
+    })
+})
+
 app.get('/myBookings/:id',(req,res)=>{
     const {id} = req.params;
     console.log("booookings::",id)

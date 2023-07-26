@@ -173,7 +173,7 @@ const AddPassenger = () => {
                     history.push(`/PrintTicket/${encodeURIComponent(JSON.stringify(data))}`)
                   }
                   else{
-                    history.push(`/CustomerPanel/${id}`);
+                    history.goBack() //push(`/CustomerPanel/${id}`);
 
                   }
                 });

@@ -16,6 +16,9 @@ const Sidebar=() => {
       <Link className="menu-item" to={`/addPassenger/${id}`}>
         Add Passenger
       </Link>
+      <Link className="menu-item" to={`/removePassenger`}>
+        Remove Passenger
+      </Link>
       <Link className="menu-item" to="/Airplane">
         Airplane
       </Link>

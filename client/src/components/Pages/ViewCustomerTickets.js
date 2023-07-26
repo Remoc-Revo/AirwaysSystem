@@ -24,8 +24,8 @@ const ViewCustomerTickets = () => {
         <table className='styled-table'>
           <thead>
             <tr>
-              <th style={{textAlign:'center'}}>S. No</th>
-              <th style={{textAlign:'center'}}>Airport Code</th>
+              {/* <th style={{textAlign:'center'}}>S. No</th> */}
+              <th style={{textAlign:'center'}}>Airport</th>
               <th style={{textAlign:'center'}}>First Name</th>
               <th style={{textAlign:'center'}}>Last Name</th>
               <th style={{textAlign:'center'}}>Flight No</th>
@@ -38,7 +38,7 @@ const ViewCustomerTickets = () => {
               {data.map((item,index)=>{
                 return(
                   <tr key={index} style={{backgroundColor:'white'}}>
-                    <th scope='row'>{index+1}</th>
+                    {/* <th scope='row'>{index+1}</th> */}
                     <td>{item.airport_code}</td>
                     <td>{item.fname}</td>
                     <td>{item.lname}</td>
