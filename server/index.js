@@ -514,7 +514,10 @@ app.get('/myBookings/:id',(req,res)=>{
 app.get('/ticketInfo/:ticketId',(req,res)=>{
     const {ticketId} = req.params;
 
-    db.query(`select * from TICKET where ticket_id = ${ticketId}`,(err,result)=>{
+    db.query(`select TICKET.*,USER.first_name, USER.phone
+             from TICKET 
+             JOIN USER on USER.user_id = TICKET.client_id
+             where ticket_id = ${ticketId}`,(err,result)=>{
         if(err){
             console.log(err)
         }
@@ -752,6 +755,35 @@ app.post("/changeTicket/:ticketId",(req,res)=>{
         }
     })
 })
+
+app.post("/changePassenger/:ticketId",(req,res)=>{
+    const {ticketId} = req.params;
+    console.log(".....changing ",ticketId)
+
+    const client_id=req.body.id;
+    const name = req.body.name;
+    const phone = req.body.phone;
+    const departure=req.body.departure;
+    const arrival=req.body.arrival;
+    const departureDate=req.body.departureDate;
+    const departureTime=req.body.departureTime;
+    // const returnDate=req.body.returnDate;
+    const classs=req.body.class;
+    // const price=req.body.price;
+
+    const sqlInsert=`update TICKET set ticket_id = ${ticketId} ,client_id = ?,client_name=?,client_phone=?,departure_airport = ?,arrival_airport = ?,departure_date = ?,departure_time = ?,class = ? where ticket_id = ${ticketId}`;
+    db.query(sqlInsert,[client_id,name,phone,departure,arrival,departureDate,departureTime,classs],(err,result)=>{
+        if(err){
+            console.log(err)
+            res.status(500).send({err:err});
+        }
+        if(result){
+            console.log("result:::",result)
+            res.status(200).send({});
+        }
+    })
+})
+
 
 app.post('/deleteBooking/:ticketId',(req,res)=>{
     const {ticketId} = req.params;

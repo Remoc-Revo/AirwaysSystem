@@ -10,16 +10,19 @@ const Sidebar=() => {
       <Link className="menu-item" to="/AdminPanel">
         Home
       </Link>
-      <Link className="menu-item" to="/Client">
+      {/* <Link className="menu-item" to="/Client">
         Clients
-      </Link>
+      </Link> */}
       <Link className="menu-item" to={`/addPassenger/${id}`}>
         Add Passenger
       </Link>
       <Link className="menu-item" to={`/removePassenger`}>
         Remove Passenger
       </Link>
-      <Link className="menu-item" to="/Airplane">
+      <Link className="menu-item" to={`/changePassenger`}>
+        Change Passenger
+      </Link>
+      {/* <Link className="menu-item" to="/Airplane">
         Airplane
       </Link>
       <Link className="menu-item" to="/FlightStatus">
@@ -45,7 +48,7 @@ const Sidebar=() => {
       </Link>
       <Link className="menu-item" to="/Booking">
         Booking
-      </Link>
+      </Link> */}
     </Menu>
   );
 };

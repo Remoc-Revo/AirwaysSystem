@@ -12,7 +12,8 @@ import {Spinner,Modal} from 'react-bootstrap';
 
 const AddPassenger = () => {
   // Swal=withReactContent(Swal);
-  const { id } = useParams();
+  const [client_id,setClient_id] = useState();
+  const {id} = useParams();
   const history = useHistory();
   console.log("tre34",id,useParams())
   const {
@@ -88,7 +89,10 @@ const AddPassenger = () => {
       Axios.get(`http://localhost:5000/ticketInfo/${id}`)
            .then((response)=>{
              if(response.status === 200){
+              setClient_id(response.data.ticketInfo.client_id);
               console.log("classsii",response.data.ticketInfo.departure_date)
+              setValue('name',response.data.ticketInfo.client_name ? response.data.ticketInfo.client_name : response.data.ticketInfo.first_name);
+              setValue('phone',response.data.ticketInfo.client_phone ? response.data.ticketInfo.client_phone : response.data.ticketInfo.phone);
               setValue('class',response.data.ticketInfo.class);
               setValue('departureTime',response.data.ticketInfo.departure_time.slice(0,-3));
               setValue('departure',response.data.ticketInfo.departure_airport);
@@ -148,6 +152,7 @@ const AddPassenger = () => {
     const url = (id !== 'undefined') ? `/changePassenger/${id}` : "/addPassenger";
 
     Axios.post(`http://localhost:5000${url}`,{
+      client_id: client_id,
       name: data.name,
       phone: data.phone,
       departure: data.departure,

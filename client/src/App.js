@@ -47,6 +47,7 @@ import PrintTicket from "./components/Pages/printTicket";
 import ViewMyBooking from "./components/Pages/viewMyBooking";
 import AddPassenger from "./components/Pages/addPassenger";
 import RemovePassenger from "./components/Pages/removePassenger";
+import ChangePassenger from "./components/Pages/changePassenger";
 
 function App() {
   return (
@@ -97,6 +98,7 @@ function App() {
           <Route path='/ViewMyBooking/:id/:ticketId' component={ViewMyBooking}/>
           <Route path='/addPassenger/:id' component={AddPassenger}/>
           <Route path='/removePassenger' component={RemovePassenger}/>
+          <Route path='/changePassenger' component={ChangePassenger}/>
           <>
           <Navbar/>
           <Route exact path='/' component={Home}/>
