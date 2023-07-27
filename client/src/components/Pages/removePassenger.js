@@ -9,7 +9,7 @@ const RemovePassenger = () => {
   const [data,setData]=useState([]);
   
   const loadData =async()=>{
-    const response= await Axios.get('http://localhost:5000/bookings');
+    const response= await Axios.get('http://localhost:5000/bookings' && 'http://192.168.0.103:5000/bookings');
     setData(response.data);
   }
 
@@ -18,13 +18,19 @@ const RemovePassenger = () => {
   },[]);
 
 
-  const delClient=(id)=>{
-    console.log(id)
-    if(window.confirm('Do you really want to delete Client with Client ID '+ id +'?'))
+  const delClient=(id,client_name,first_name)=>{
+    console.log("the infooo",id+client_name+first_name)
+    if(window.confirm(`Do you really want to Remove Passenger: ${(client_name)?client_name:first_name}?`))
     {
-      Axios.delete(`http://localhost:5000/api/remove/${id}`);
-      toast.success('Client deleted successfully!');
-      setTimeout(()=> loadData(),500);
+      Axios.delete(`http://localhost:5000/removePassenger/${id}` && `http://192.168.0.103:5000/removePassenger/${id}`)
+           .then(response=>{
+              if(response.status === 200){
+                // window.location.reload();
+                setTimeout(()=> loadData(),500);
+
+              }
+           })
+      // toast.success('Client deleted successfully!');
     }
 
   }
@@ -55,8 +61,8 @@ const RemovePassenger = () => {
                 return(
                   <tr key={index}>
                     {/* <th scope='row'>{index+1}</th> */}
-                    <td>{item.client_name}</td>
-                    <td>{item.client_phone}</td>
+                    <td>{(item.client_name)?item.client_name:item.first_name}</td>
+                    <td>{item.client_phone?item.client_phone:item.phone}</td>
                     <td>{item.departure_airport}</td>
                     <td>{item.arrival_airport}</td>
                     <td>{item.departure_time}</td>
@@ -64,10 +70,10 @@ const RemovePassenger = () => {
                     <td>{item.class}</td>
                     
                     <td>
-                      <Link to={`/Update/${item.client_id}`}>
+                      {/* <Link to={`/Update/${item.client_id}`}>
                         <button className='btn btn-edit'>Edit</button>
-                      </Link>
-                        <button className='btn btn-delete' onClick={()=> delClient(item.client_id)}>Remove</button>
+                      </Link> */}
+                        <button className='btn btn-delete' onClick={()=> delClient(item.ticket_id,item.client_name,item.first_name)}>Remove</button>
                       {/* <Link to={`/View/${item.client_id}`}>
                         <button className='btn btn-view'>View</button>
                       </Link> */}

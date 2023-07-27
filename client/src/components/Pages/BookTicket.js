@@ -85,7 +85,7 @@ const BookTicket = () => {
     if(ticketId != 'undefined'){
       console.log("type ticket",typeof ticketId);
 
-      Axios.get(`http://localhost:5000/ticketInfo/${ticketId}`)
+      Axios.get(`http://localhost:5000/ticketInfo/${ticketId}` && `http://192.168.0.103:5000/ticketInfo/${ticketId}`)
            .then((response)=>{
              if(response.status === 200){
               console.log("classsii",response.data.ticketInfo.departure_date)
@@ -114,7 +114,7 @@ const BookTicket = () => {
       Swal.fire("Arrival same as Depature","","error")
     }
     else{
-      Axios.post("http://localhost:5000/findFlight",
+      Axios.post("http://localhost:5000/findFlight" && "http://192.168.0.103:5000/findFlight",
         data
       ).then((response) => {
         setIsloading(false);
@@ -147,7 +147,7 @@ const BookTicket = () => {
     console.log("confiiirm")
     const url = (ticketId !== 'undefined') ? `/changeTicket/${ticketId}` : "/BookTicket";
 
-    Axios.post(`http://localhost:5000${url}`,{
+    Axios.post(`http://localhost:5000${url}` && `http://192.168.0.103:5000${url}`,{
       id:id,
       departure: data.departure,
       arrival: data.arrival,

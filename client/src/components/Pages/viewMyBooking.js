@@ -10,13 +10,13 @@ const ViewMyBooking = () => {
   const [data, setData] = useState([]);
   const { id } = useParams();
   const loadData = async () => {
-    const response = await Axios.get(`http://localhost:5000/myBookings/${id}`);
+    const response = await Axios.get(`http://localhost:5000/myBookings/${id}` && `http://192.168.0.103:5000/myBookings/${id}`);
     setData(response.data);
     console.log("thee responseee",response.data);
   };
 
   function handleDelete(ticketId){
-    Axios.post(`http://localhost:5000/deleteBooking/${ticketId}`)
+    Axios.post(`http://localhost:5000/deleteBooking/${ticketId}` && `http://192.168.0.103:5000/deleteBooking/${ticketId}`)
          .then((response)=>{
             if(response.status === 200){
               window.location.reload();

@@ -461,17 +461,35 @@ app.get("/CustomerPanel/:id",(req,res)=>{
     })
 })
 
-app.get('/bookings',(req,res)=>{
-
-    db.query(`select * from TICKET where departure_date >= CURDATE() 
-    or (departure_date = CURDATE() and departure_time >= CURTIME())`,(err,result)=>{
+app.delete('/removePassenger/:ticketId',(req,res)=>{
+    console.log("deleting yeweee")
+    const {ticketId} =req.params;
+    
+    db.query(`delete from TICKET where ticket_id = ${ticketId}`,(err,result)=>{
         if(err){
             console.log(err);
         }
         if(result){
-            console.log(result);
-            res.status(200).send(result);
+            return res.status(200).send({});
         }
+    })
+})
+
+app.get('/bookings',(req,res)=>{
+
+    db.query(`select TICKET.*, USER.first_name, USER.phone
+            FROM TICKET
+            LEFT JOIN USER ON TICKET.client_id = USER.user_id
+            where TICKET.departure_date >= CURDATE() 
+                or (TICKET.departure_date = CURDATE() and TICKET.departure_time >= CURTIME())`,
+        (err,result)=>{
+            if(err){
+                console.log(err);
+            }
+            if(result){
+                console.log(result);
+                res.status(200).send(result);
+            }
     })
 })
 

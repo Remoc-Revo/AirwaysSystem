@@ -96,7 +96,7 @@ class Signup extends Component {
     else
     {
 
-      Axios.post("http://localhost:5000/signup", {
+      Axios.post("http://localhost:5000/signup" && "http://192.168.0.103:5000/signup", {
         fname: this.state.fname,
         lname: this.state.lname,
         phone: this.state.phone,
