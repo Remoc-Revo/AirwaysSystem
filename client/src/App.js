@@ -48,6 +48,7 @@ import ViewMyBooking from "./components/Pages/viewMyBooking";
 import AddPassenger from "./components/Pages/addPassenger";
 import RemovePassenger from "./components/Pages/removePassenger";
 import ChangePassenger from "./components/Pages/changePassenger";
+import Help from "./components/Pages/help";
 
 function App() {
   return (
@@ -99,6 +100,7 @@ function App() {
           <Route path='/addPassenger/:id' component={AddPassenger}/>
           <Route path='/removePassenger' component={RemovePassenger}/>
           <Route path='/changePassenger' component={ChangePassenger}/>
+          <Route path='/help' component={Help}/>
           <>
           <Navbar/>
           <Route exact path='/' component={Home}/>

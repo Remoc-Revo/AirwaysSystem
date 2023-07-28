@@ -12,7 +12,7 @@ const Home = () => {
             <div className="text-center">
               {" "}
               <img
-                src={require("../../images/Destinations_Dekstop.png")}
+                src={require("../../images/KA2.webp")}
                 style={{ borderRadius: "20px" }}
                 width="650"
                 height="550"
@@ -21,7 +21,7 @@ const Home = () => {
                 <h5 className="card-title">
                   <strong style={{ fontSize: "25px" }}>
                     <br/>Discover the destinations you can
-                    <br /> travel with FAST Airways
+                    <br /> travel with Kenya Airways
                   </strong>
                 </h5>
               </div>
@@ -81,10 +81,10 @@ const Home = () => {
             className=" text-center"
             style={{ width: "35rem" }}
           >
-            <h1>Exceptional experiences with FAST Airways</h1>
+            <h1>Exceptional experiences with Kenya Airways</h1>
             <h5>
               Explore the world, earn rewards and live the best adventures with
-              FAST Airways.{" "}
+              Kenya Airways.{" "}
             </h5>
             <br></br>
             {/* <a href="contact.php"><button type="button" className="btn btn-primary">Contact us</button></a> */}
@@ -135,7 +135,7 @@ const Home = () => {
                   <div className="col-lg-6">
                     <div className="card-body">
                       <h5 className="card-title">
-                        <strong>Time flies on board FAST Airways</strong>
+                        <strong>Time flies on board Kenya Airways</strong>
                       </h5>
                       <p className="card-text">
                         Sit back, relax and enjoy your flight with our onboard
@@ -198,7 +198,7 @@ const Home = () => {
           >
             <div className="d-flex justify-content-center align-items-center h-100">
               <div className="text-white">
-                <h1 className="mb-3" style={{fontWeight:'800',marginTop:'20px'}}>Start your journey with FAST Airways</h1>
+                <h1 className="mb-3" style={{fontWeight:'800',marginTop:'20px'}}>Start your journey with Kenya Airways</h1>
                 <h4 className="mb-3" style={{fontSize:'20px'}}>Exclusive offers, special offers and amazing rewards await for premium membership holders</h4>
                 <a
                   className="btn btn-outline-light btn-lg"

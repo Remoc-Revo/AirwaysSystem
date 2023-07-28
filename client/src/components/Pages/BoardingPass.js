@@ -49,8 +49,8 @@ const BoardingPass = () => {
           <li></li>
         </ul>
         <div className="ticket">
-          <span className="airline">FAST Airways</span>
-          <span className="airline airlineslip">FAST Airways</span>
+          <span className="airline">Kenya Airways</span>
+          <span className="airline airlineslip">Kenya Airways</span>
           <span className="boarding">Boarding pass</span>
           <div className="content">
             <span className="jfk">{data.airport_code}</span>

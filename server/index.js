@@ -519,7 +519,7 @@ app.get('/ticketInfo/:ticketId',(req,res)=>{
              JOIN USER on USER.user_id = TICKET.client_id
              where ticket_id = ${ticketId}`,(err,result)=>{
         if(err){
-            console.log(err)
+            console.log(err);
         }
         if(result){
             const ticketInfo = result[0]

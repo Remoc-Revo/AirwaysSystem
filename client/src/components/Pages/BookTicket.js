@@ -9,6 +9,7 @@ import Axios from "axios";
 import Swal from "sweetalert2";
 import withReactContent from "sweetalert2-react-content";
 import {Spinner,Modal} from 'react-bootstrap';
+import CustomerNavbar from "../CustomerNavbar";
 
 const BookTicket = () => {
   // Swal=withReactContent(Swal);
@@ -182,6 +183,7 @@ const BookTicket = () => {
   }
   return (
     <div className="bg-img">
+      <CustomerNavbar/>
       <form onSubmit={handleSubmit(onSubmit)} >
           {/* header section */}
 

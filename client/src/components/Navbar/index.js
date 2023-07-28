@@ -8,16 +8,17 @@ const Navbar = () => {
       <Nav style={{width:"100%"}}>
         <NavLink to="/">
           <img
-            src={require("../../images/logo.png")}
+            src={require("../../images/KenyaAirwaysLogo.png")}
             alt="logo"
-            style={{ width: "125px", height: "120px", marginRight: "70%" }}
+            style={{ width: "125px", height: "80px", marginRight: "70%" }}
           />
           {/* <h3>FMA Airlines Management</h3> */}
         </NavLink>
         <NavMenu>
           <NavLink to="/BookTicket">View Flights</NavLink>
-          <NavLink to="/about">About</NavLink>
-          <NavLink to="/contact-us">Contact</NavLink>
+          {/* <NavLink to="/about">About</NavLink> */}
+          {/* <NavLink to="/contact-us">Contact</NavLink> */}
+          <NavLink to="/help">Help</NavLink>
           <NavBtn>
           <Dropdown >
             <Dropdown.Toggle id="dropdown-basic" style={{fontSize:'20px',marginTop:'-10px',height:'48px'}}>Client Login</Dropdown.Toggle>

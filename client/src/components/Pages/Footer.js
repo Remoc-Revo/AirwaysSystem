@@ -27,7 +27,7 @@ const Footer = () => {
 
       </div>
       <div className="text-center p-3" style={{backgroundColor: "rgba(0, 0, 0, 0.2)"}}>
-        © 2022 Copyright: All rights are reserved!
+        © 2023 Copyright: All rights are reserved!
       </div>
     </footer>
     </div>

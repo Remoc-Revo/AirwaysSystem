@@ -9,6 +9,7 @@ import Axios from "axios";
 import Swal from "sweetalert2";
 import withReactContent from "sweetalert2-react-content";
 import {Spinner,Modal} from 'react-bootstrap';
+import Sidebar from "./Sidebar";
 
 const AddPassenger = () => {
   // Swal=withReactContent(Swal);
@@ -188,6 +189,7 @@ const AddPassenger = () => {
   }
   return (
     <div className="bg-img">
+      <Sidebar/>
       <form onSubmit={handleSubmit(onSubmit)} >
           {/* header section */}
 
