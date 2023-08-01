@@ -85,7 +85,7 @@ const AddPassenger = () => {
     // loadData();
 
     if(id != 'undefined'){
-      console.log("type ticket",typeof id);
+      console.log("type ticket",id);
 
       Axios.get(`http://localhost:5000/ticketInfo/${id}`)
            .then((response)=>{

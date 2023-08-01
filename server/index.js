@@ -521,10 +521,24 @@ app.get('/ticketInfo/:ticketId',(req,res)=>{
         if(err){
             console.log(err);
         }
-        if(result){
+        if(result && result.length !=0){
             const ticketInfo = result[0]
-            console.log(ticketInfo)
+            console.log("first r",result)
             return res.status(200).send({ticketInfo});
+        }
+        else{
+            //the user was registered by an admin
+            db.query(`select * from TICKET where ticket_id = ${ticketId}`,
+            (err,result)=>{
+                if(err){
+                    console.log(err);
+                }
+                if(result){
+                    const ticketInfo = result[0]
+                    console.log(result)
+                    return res.status(200).send({ticketInfo});
+                }
+            });
         }
     })
 })

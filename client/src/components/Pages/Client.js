@@ -9,7 +9,7 @@ const Client = () => {
   const [data,setData]=useState([]);
   
   const loadData =async()=>{
-    const response= await Axios.get('http://localhost:5000/api/get');
+    const response= await Axios.get('http://localhost:5000/api/get'||'http://localhost:5000/api/get');
     setData(response.data);
   }
 

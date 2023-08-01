@@ -21,6 +21,7 @@ const ChangePassenger = () => {
 
 
   const changePass=(id)=>{
+    console.log("the tiiicket id:"+id)
     history.push(`/addPassenger/${id}`);
   }
   

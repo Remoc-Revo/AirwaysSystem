@@ -19,10 +19,10 @@ export default function Help(){
                 <p>Here the Passenger is able to view flights available that can be booked.They can then go ahead and book a Flight of their choice.</p>
             
                 
-                <h1><b>About Us Page</b></h1>
+                {/* <h1><b>About Us Page</b></h1>
                 <p>This page shows more information about Kenya Airways,Our Goals and Our Missions.The user can also see reviews made by our happy clients.</p>
                 <h1><b>Contact Us Page</b></h1>
-                <p>This page shows how the client can be able to reach us.There are details of how and where to find us .Our Address, directions and phone numbers are also found on this page.</p>
+                <p>This page shows how the client can be able to reach us.There are details of how and where to find us .Our Address, directions and phone numbers are also found on this page.</p> */}
             </div>
         </div>
         
