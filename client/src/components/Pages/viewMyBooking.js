@@ -10,13 +10,13 @@ const ViewMyBooking = () => {
   const [data, setData] = useState([]);
   const { id } = useParams();
   const loadData = async () => {
-    const response = await Axios.get(`http://localhost:5000/myBookings/${id}` && `http://192.168.0.103:5000/myBookings/${id}`);
+    const response = await Axios.get(`http://localhost:5000/myBookings/${id}` || `http://192.168.0.103:5000/myBookings/${id}`);
     setData(response.data);
     console.log("thee responseee",response.data);
   };
 
   function handleDelete(ticketId){
-    Axios.post(`http://localhost:5000/deleteBooking/${ticketId}` && `http://192.168.0.103:5000/deleteBooking/${ticketId}`)
+    Axios.post(`http://localhost:5000/deleteBooking/${ticketId}` || `http://192.168.0.103:5000/deleteBooking/${ticketId}`)
          .then((response)=>{
             if(response.status === 200){
               window.location.reload();
@@ -55,7 +55,7 @@ const ViewMyBooking = () => {
                     <td>{item.departure_date}</td>
                     <td>{item.departure_time}</td>
                     <td className="d-flex justify-content-between">
-                        <button className="btn btn-success">Print Ticket</button>
+                        <button className="btn btn-success" onClick={()=>history.push(`/PrintTicket/${encodeURIComponent(JSON.stringify(item))}`)}>Print Ticket</button>
                         <button className="btn btn-warning" onClick={()=>history.push(`/BookTicket/${id}/${item.ticket_id}`)}>Change</button>
                         <button className="btn btn-danger" onClick={()=>handleDelete(item.ticket_id)}>Delete</button>
                         

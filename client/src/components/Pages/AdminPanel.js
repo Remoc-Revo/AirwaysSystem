@@ -35,8 +35,7 @@ const AdminPanel = () => {
       <br/>
       <br/>
       <div style={{backgroundColor:'black', width:'100vw', padding:'10px'}}>
-        <h1 style={{color:'white'}}>Bookings Count: {user.countt}</h1>
-        <h1 style={{color:'white'}}>Revenue Generated: {user.summ}</h1>
+        {/* <h1 style={{color:'white'}}>Bookings Count: {user.countt}</h1> */}
       </div>
       <NavBtn >
           <NavBtnLink to="/">Logout</NavBtnLink>

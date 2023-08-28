@@ -714,7 +714,22 @@ app.post('/BookTicket',(req,res)=>{
         }
         if(result){
             console.log("result:::",result)
-            res.status(200).send({});
+
+            const query = `select * from TICKET where client_id=${client_id} and departure_airport='${departure}' and 
+                            DATE(departure_date)='${departureDate}'and class='${classs}'`
+
+            db.query(query,(err,result)=>{
+                            console.log(query)
+                            if(err){
+                                console.log(err);
+                            }
+                            if(result && result.length !=0){
+                                console.log(result[0].ticket_id);
+                                res.status(200).send({ticketId :result[0].ticket_id});
+                            }
+                            
+                        })
+            
         }
     })
 })

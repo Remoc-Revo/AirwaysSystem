@@ -11,8 +11,8 @@ function Slider() {
           alt="First slide"
         />
         <Carousel.Caption>
-          <h3 ><strong style={{fontSize: '40px'}}>Fly to Qatar with Kenya Airways</strong></h3>
-          <p>Be there at the Wordlcup  with Kenya Airways and cheer your team to victory.</p>
+          <h3 ><strong style={{fontSize: '40px'}}>Fly with Kenya Airways</strong></h3>
+          
         </Carousel.Caption>
       </Carousel.Item>
       <Carousel.Item interval={500} className={classes.item}>
@@ -22,8 +22,8 @@ function Slider() {
           alt="Second slide"
         />
         <Carousel.Caption>
-        <h3 ><strong style={{fontSize: '40px'}}>Discover the wonders of the world</strong></h3>
-          <p>Journey with us on a unique adventure to discover the world</p>
+        <h3 ><strong style={{fontSize: '40px'}}>Discover</strong></h3>
+          <p>Journey with us on a unique adventure</p>
         </Carousel.Caption>
       </Carousel.Item>
       <Carousel.Item interval={500} className={classes.item}>

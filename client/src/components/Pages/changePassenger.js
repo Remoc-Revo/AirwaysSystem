@@ -11,7 +11,7 @@ const ChangePassenger = () => {
   const history = useHistory();
 
   const loadData =async()=>{
-    const response= await Axios.get('http://localhost:5000/bookings' && 'http://192.168.0.103:5000/bookings');
+    const response= await Axios.get('http://localhost:5000/bookings' || 'http://192.168.0.103:5000/bookings');
     setData(response.data);
   }
 
@@ -25,6 +25,13 @@ const ChangePassenger = () => {
     history.push(`/addPassenger/${id}`);
   }
   
+  function toKenyanDate(dateInput){
+    const retrievedDate = new Date(dateInput);
+    const dateInKenyanLocale  = retrievedDate.toLocaleString('sw-KE');
+    const kenyanDate = dateInKenyanLocale.split(",")[0];
+    console.log(dateInKenyanLocale)
+    return kenyanDate;
+  }
   return (
     <>
       <Sidebar/>
@@ -56,7 +63,7 @@ const ChangePassenger = () => {
                     <td>{item.departure_airport}</td>
                     <td>{item.arrival_airport}</td>
                     <td>{item.departure_time}</td>
-                    <td>{item.departure_date}</td>
+                    <td>{toKenyanDate(item.departure_date)}</td>
                     <td>{item.class}</td>
                     
                     <td>

@@ -22,6 +22,7 @@ const Sidebar=() => {
       <Link className="menu-item" to={`/changePassenger`}>
         Change Passenger
       </Link>
+      {/* <Link to="/help">Help</Link> */}
       {/* <Link className="menu-item" to="/Airplane">
         Airplane
       </Link>

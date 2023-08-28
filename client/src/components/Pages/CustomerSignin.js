@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import Axios from "axios";
-import "./styles/Signin.css";
+// import "./styles/Signin.css";
 import { useHistory, Link } from "react-router-dom";
 import Swale from "sweetalert2";
 import withReactContent from "sweetalert2-react-content";
@@ -18,7 +18,7 @@ const Signin = () => {
 
   const history = useHistory();
   const loadData = async () => {
-    const response = await Axios.post("http://localhost:5000/getcustomerlogin" && "http://192.168.0.103:5000/getcustomerlogin",{
+    const response = await Axios.post("http://localhost:5000/getcustomerlogin" || "http://192.168.0.103:5000/getcustomerlogin",{
       email: emailLogin,
       password: passwordLogin,
     });
@@ -34,7 +34,8 @@ const Signin = () => {
   const Login = (event) => {
     event.preventDefault();
     loadData();
-    Axios.post("http://localhost:5000/customerlogin" && "http://192.168.0.103:5000/customerlogin", {
+    Axios.post("http://localhost:5000/customerlogin" || "http://192.168.0.103:5000/customerlogin"
+    , {
       email: emailLogin,
       password: passwordLogin,
     }).then((response) => {

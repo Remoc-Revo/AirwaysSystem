@@ -24,6 +24,7 @@ const BookTicket = () => {
   } = useForm();
 
   const [data, setData] = useState([]);
+  const [printTicketId, setprintTicketId] = useState([]);
   const [isLoading,setIsloading] = useState(false);
   const [isFlightAvailable,setIsFlightAvailable] = useState(false);
   const [showFlightModal, setShowFlightModal] = useState(false);
@@ -86,7 +87,7 @@ const BookTicket = () => {
     if(ticketId != 'undefined'){
       console.log("type ticket",typeof ticketId);
 
-      Axios.get(`http://localhost:5000/ticketInfo/${ticketId}` && `http://192.168.0.103:5000/ticketInfo/${ticketId}`)
+      Axios.get(`http://localhost:5000/ticketInfo/${ticketId}` || `http://192.168.0.103:5000/ticketInfo/${ticketId}`)
            .then((response)=>{
              if(response.status === 200){
               console.log("classsii",response.data.ticketInfo.departure_date)
@@ -109,13 +110,12 @@ const BookTicket = () => {
     // data.departureDatetime=combineDatetime(data.departureDate,data.departureTime);
     // console.log("data",data);
     setData(data);
-
     // setIsloading(true);
     if(data.departure==data.arrival){
       Swal.fire("Arrival same as Depature","","error")
     }
     else{
-      Axios.post("http://localhost:5000/findFlight" && "http://192.168.0.103:5000/findFlight",
+      Axios.post("http://localhost:5000/findFlight" || "http://192.168.0.103:5000/findFlight",
         data
       ).then((response) => {
         setIsloading(false);
@@ -148,7 +148,7 @@ const BookTicket = () => {
     console.log("confiiirm")
     const url = (ticketId !== 'undefined') ? `/changeTicket/${ticketId}` : "/BookTicket";
 
-    Axios.post(`http://localhost:5000${url}` && `http://192.168.0.103:5000${url}`,{
+    Axios.post(`http://localhost:5000${url}` || `http://192.168.0.103:5000${url}`,{
       id:id,
       departure: data.departure,
       arrival: data.arrival,
@@ -157,7 +157,10 @@ const BookTicket = () => {
       departureTime: data.departureTime
     })
          .then((response)=>{
+
             if(response.status === 200){
+              setprintTicketId(response.data);
+              
               Swal.fire({
                 text: (ticketId !== 'undefined') ? "Changed Successfully" : "Booked Successfully",
                 icon:"success",
@@ -166,9 +169,9 @@ const BookTicket = () => {
               .then(
                 (result)=>{
                   if(result.isConfirmed){
-                    console.log("the dataa to push::",data,
-                    "\n JSON.stringify::",JSON.stringify(data),
-                    "\n encodeURIComponent::",encodeURIComponent(JSON.stringify(data)))
+                    console.log("the dataa to push::",printTicketId,
+                    "\n JSON.stringify::",JSON.stringify(printTicketId),
+                    "\n encodeURIComponent::",encodeURIComponent(JSON.stringify(printTicketId)))
                     data.client_id = id;
                     history.push(`/PrintTicket/${encodeURIComponent(JSON.stringify(data))}`)
                   }

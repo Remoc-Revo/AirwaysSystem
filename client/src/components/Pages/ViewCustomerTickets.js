@@ -7,7 +7,7 @@ const ViewCustomerTickets = () => {
   const [data, setData] = useState([]);
   const { id } = useParams();
   const loadData = async () => {
-    const response = await Axios.get(`http://localhost:5000/showPass/${id}` && `http://192.168.0.103:5000/showPass/${id}`);
+    const response = await Axios.get(`http://localhost:5000/showPass/${id}` || `http://192.168.0.103:5000/showPass/${id}`);
     setData(response.data);
     console.log(response.data);
   };

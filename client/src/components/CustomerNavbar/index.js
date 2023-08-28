@@ -32,6 +32,7 @@ const CustomerNavbar = () => {
             <NavLink to={`/ViewMyBooking/${id}/${ticketId}`} >
                 View Bookings
             </NavLink>
+            <NavLink to="/help">Help</NavLink>
             {/* <NavLink to={`/AddReviews/${id}`} >
                 Add Review
             </NavLink> */}

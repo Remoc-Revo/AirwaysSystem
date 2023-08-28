@@ -113,9 +113,9 @@ const Home = () => {
                         Join us and earn Greens Points for every action you take
                         to help us reduce waste of food, fuel and materials.
                       </p>
-                      <a href="#" className="btn btn-primary">
+                      {/* <a href="#" className="btn btn-primary">
                         Learn more
-                      </a>
+                      </a> */}
                     </div>
                   </div>
                 </div>
@@ -142,9 +142,9 @@ const Home = () => {
                         services. Learn more about our dining options, inflight
                         entertainment,
                       </p>
-                      <a href="#" className="btn btn-primary">
+                      {/* <a href="#" className="btn btn-primary">
                         Learn more
-                      </a>
+                      </a> */}
                     </div>
                   </div>
                 </div>
@@ -171,9 +171,9 @@ const Home = () => {
                         bid and experience the best in comfort, services, and
                         entertainment.
                       </p>
-                      <a href="#" className="btn btn-primary">
+                      {/* <a href="#" className="btn btn-primary">
                         Learn more
-                      </a>
+                      </a> */}
                     </div>
                   </div>
                 </div>
@@ -200,13 +200,13 @@ const Home = () => {
               <div className="text-white">
                 <h1 className="mb-3" style={{fontWeight:'800',marginTop:'20px'}}>Start your journey with Kenya Airways</h1>
                 <h4 className="mb-3" style={{fontSize:'20px'}}>Exclusive offers, special offers and amazing rewards await for premium membership holders</h4>
-                <a
+                {/* <a
                   className="btn btn-outline-light btn-lg"
                   href="#!"
                   role="button" style={{backgroundColor:'grey', fontSize:'20px',marginBottom:'20px'}}
                 >
                   Join Now
-                </a>
+                </a> */}
               </div>
             </div>
           </div>

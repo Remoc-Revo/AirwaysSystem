@@ -9,7 +9,7 @@ const RemovePassenger = () => {
   const [data,setData]=useState([]);
   
   const loadData =async()=>{
-    const response= await Axios.get('http://localhost:5000/bookings' && 'http://192.168.0.103:5000/bookings');
+    const response= await Axios.get('http://localhost:5000/bookings' || 'http://192.168.0.103:5000/bookings');
     setData(response.data);
   }
 
@@ -22,7 +22,7 @@ const RemovePassenger = () => {
     console.log("the infooo",id+client_name+first_name)
     if(window.confirm(`Do you really want to Remove Passenger: ${(client_name)?client_name:first_name}?`))
     {
-      Axios.delete(`http://localhost:5000/removePassenger/${id}` && `http://192.168.0.103:5000/removePassenger/${id}`)
+      Axios.delete(`http://localhost:5000/removePassenger/${id}` || `http://192.168.0.103:5000/removePassenger/${id}`)
            .then(response=>{
               if(response.status === 200){
                 // window.location.reload();
