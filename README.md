@@ -9,7 +9,7 @@ A web application for viewing avalable flights, booking flights and printing tic
 
 **DIRECTORY STRUCTURE**
 
-```
+```plaintext
 AirwaysSystem/
 ├── client
 │   ├── node_modules
