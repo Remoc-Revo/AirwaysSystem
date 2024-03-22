@@ -1,5 +1,5 @@
 **AIRWAYS MANAGEMENT SYSTEM**
-A web application for viewing avalable flights, booking flights and printing tickets
+<br>A web application for viewing avalable flights, booking flights and printing tickets
 
 **FUNCTIONS:**
 - Check Flights
