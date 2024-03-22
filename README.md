@@ -9,7 +9,8 @@ A web application for viewing avalable flights, booking flights and printing tic
 
 **DIRECTORY STRUCTURE**
 
-.
+```
+AirwaysSystem/
 ├── client
 │   ├── node_modules
 │   ├── package.json
@@ -26,6 +27,6 @@ A web application for viewing avalable flights, booking flights and printing tic
     ├── node_modules
     ├── package.json
     └── package-lock.json
-
+```
 
 
