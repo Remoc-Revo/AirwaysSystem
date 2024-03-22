@@ -9,7 +9,6 @@
 
 **DIRECTORY STRUCTURE**
 
-<plaintext>
 ```AirwaysSystem/
 ├── client
 │   ├── node_modules
