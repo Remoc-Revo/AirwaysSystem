@@ -9,7 +9,7 @@
 
 **DIRECTORY STRUCTURE**
 
-```<plaintext>
+<plaintext>
 AirwaysSystem/
 ├── client
 │   ├── node_modules
@@ -27,6 +27,6 @@ AirwaysSystem/
     ├── node_modules
     ├── package.json
     └── package-lock.json
-```
+
 
 
